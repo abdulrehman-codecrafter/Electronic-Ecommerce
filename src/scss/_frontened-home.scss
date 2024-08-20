@@ -1,0 +1,46 @@
+.hero-section{
+
+}
+.hero-content h1{
+    font-size: 2.5rem;
+}
+
+.hero-img img{
+    max-width: 800px
+}
+
+.home-page-banner{
+    height: 300px;
+    background-image: url(../assets/b2.jpg);
+    background-color: #f0f0f0; /* Fallback color */
+}
+
+@media screen and (max-width:1200px) {
+    .hero-img img{
+        width: 500px
+    }
+}
+@media screen and (max-width:1000px) {
+    .hero-img img{
+        width: 400px
+    }
+}
+@media screen and (max-width:770px) {
+    .hero-section{
+        flex-direction: column-reverse;
+    }
+    .hero-img img{
+        margin-top: 60px;
+        width: 400px
+    }
+}
+@media screen and (max-width:576px) {
+    .hero-img img{
+        width: 350px
+    }
+    .hero-content{
+    }
+    .hero-content h1{
+        font-size: 2rem;
+    }
+}

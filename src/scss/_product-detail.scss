@@ -1,0 +1,20 @@
+.product-detail-img{
+  
+}
+.product-detail-img img{
+    width: 300px;
+}
+.product-detail-p{
+  text-align:justify;
+  line-height: 1.5;
+  max-width: 600px;
+  font-size: 0.94rem;
+  font-weight: 300
+}
+
+
+@media screen and (max-width: 768px) {
+  .product-detail{
+    flex-direction: column;
+  }
+}

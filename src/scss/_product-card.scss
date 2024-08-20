@@ -1,0 +1,36 @@
+.product-img{
+  border-radius: 1rem;
+
+}
+.product-card img{
+  width: 230px;
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+.product-card h5{
+  height: 48px;
+  
+}
+.product-card{
+  width: 280px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+  border-radius: 1.5rem;
+  transition-duration: 0.2s;
+
+  button{
+    color: white;
+    background-color: var(--primary-color);
+    border-radius: 0.5rem;
+    &:hover{
+      
+      border: 1.5px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+  }
+
+}
+
+.product-card img:hover{
+  transform: scale(1.01);
+}

@@ -1,0 +1,25 @@
+.all-products-container{
+  min-height: calc(100vh - 500px);
+}
+.filter-bar button{
+  max-height:36.8px ;
+  color: var(--primary-color);
+  border: 1.7px solid var(--primary-color);
+    
+  
+}
+.filter-bar button:focus,
+.filter-bar button:hover{
+  background-color: var(--primary-color);
+    color: white;
+}
+
+
+.filter-bar input{
+  max-width: 200px;
+  height: 36.8px;
+}
+
+.product-detail-img{
+  max-width: 30%;
+}
