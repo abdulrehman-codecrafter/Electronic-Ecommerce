@@ -9,8 +9,6 @@ import f1 from "../../../assets/f1.png";
 import f2 from "../../../assets/f2.png";
 import f3 from "../../../assets/f3.png";
 import f4 from "../../../assets/f4.png";
-import f5 from "../../../assets/f5.png";
-import f6 from "../../../assets/f6.png";
 import ProductCard from "../../../components/ProductCard";
 import { firestore } from "../../../config/firebase";
 import { collection, getDocs } from "firebase/firestore";
@@ -18,27 +16,27 @@ import FooterComponent from "../../../components/Footer";
 
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { ShopItemsContext } from "../../../contexts/ShopContext";
+import { ProductsContext } from "../../../contexts/ProductsContext";
 import { useAuthContext } from "../../../contexts/AuthContext";
 
 
 export default function Home() {
  
-  const [products, setProducts] = useState([]);
-  const {shopItems}=useContext(ShopItemsContext)
+  const [homeProducts, setHomeProducts] = useState([]);
+  const {products}=useContext(ProductsContext)
   
 
   useEffect(() => {
-    setProducts(shopItems.slice(0,6))
+    setHomeProducts(products.slice(0,6))
     
     Aos.init()
 
-  }, [shopItems]);
+  }, [products]);
 
   return (
     <>
       <div className="container">
-        <div className="my-5 hero-section d-flex align-items-center justify-content-between">
+        <div className="mt-5 mb-4 hero-section d-flex align-items-center justify-content-between">
           <div className="hero-content">
             <h1 data-aos="fade-right" data-aos-duration="800" className="fw-semibold">
               Discover the Future of <br />{" "}
@@ -60,9 +58,9 @@ export default function Home() {
             <img src={Background} alt="" />
           </div>
         </div>
-        <h2 className="fw-semibold text-center my-5">Our Services</h2>
+        <h2 className="fw-semibold text-center  mb-5">Our Services</h2>
 
-        <div className="feature-section d-flex flex-wrap justify-content-center gap-2">
+        <div className="services-banner-section d-flex flex-wrap justify-content-center gap-2">
           <FeatureCard img={f1} text={"Free Shipping"} color={"#fddde4"} />
           <FeatureCard img={f2} text={"Online Order"} color={"#cdebbc"} />
           <FeatureCard img={f3} text={"Save Money"} color={"#d1e8f2"} />
@@ -72,7 +70,7 @@ export default function Home() {
         <div className="featured-products-section">
           <h2 className="text-center my-5">Featured Products</h2>
           <div className="featured-items-container d-flex gap-5 flex-wrap justify-content-center">
-            {products.map((product, index) => {
+            {homeProducts.map((product, index) => {
               return <ProductCard key={index} product={product} />;
             })}
           </div>

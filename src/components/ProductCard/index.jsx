@@ -2,8 +2,10 @@ import React from "react";
 import { FaStar } from "react-icons/fa6";
 import { Navigate, useNavigate } from "react-router-dom";
 import { HiShoppingCart } from "react-icons/hi";
+import { useCartContext } from "../../contexts/CartContext";
 
 export default function ProductCard({ product }) {
+  const { dispatch } = useCartContext();
   const navigate = useNavigate();
   return (
     <div className="product-card py-3  px-3">
@@ -21,6 +23,9 @@ export default function ProductCard({ product }) {
       <h5
         className="align-self-start mt-3 px-1"
         style={{ textTransform: "capitalize" }}
+        onClick={() => {
+          navigate("/shop/product-detail", { state:  {id:product.id}  });
+        }}
       >
         {product.title}
       </h5>
@@ -34,9 +39,14 @@ export default function ProductCard({ product }) {
       <h6 className="align-self-start text-success">$ {product.price}</h6>
       <button
         className="btn"
-        
+        onClick={() => {
+          dispatch({
+            type: "ADD_ITEM",
+            payload: { ...product,quantity:1 },
+          });
+        }}
       >
-      Add to Cart &nbsp;
+      Shop Now &nbsp;
       <HiShoppingCart color="" size={19}/>
       </button>
     </div>

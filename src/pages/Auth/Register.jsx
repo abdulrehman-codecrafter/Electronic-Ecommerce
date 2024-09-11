@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // import { auth, firestore } from "../../config/firebase";
 import { auth, firestore } from "../../config/firebase";
 import { doc, setDoc } from "firebase/firestore";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { toast, Toaster } from "sonner";
 import { Link } from "react-router-dom";
 
@@ -26,7 +26,7 @@ export default function Register() {
     event.preventDefault();
     const { userName, email, password, confirmPassword } = state;
     if (userName.length < 3) return toast.error("Invalid User Name"); 
-    if(! window.validateEmail(email)) return toast.error("Invalid Email")
+    // if(! window.validateEmail(email)) return toast.error("Invalid Email")
     if(password.length<6) return toast.error("Password length must be greater than 6")
     if(password!==confirmPassword) return toast.error("Password do not match")
 
@@ -37,6 +37,8 @@ export default function Register() {
         email,
         password,
       );
+      await sendEmailVerification(userCredential.user)
+
       await setDoc(doc(firestore, "users", userCredential.user.uid), {
         userName,
         email,
@@ -45,7 +47,9 @@ export default function Register() {
         roles:["customer"]
 
       });
-      toast.success("User registered successfully ")
+      // toast.success("User registered successfully ")
+      toast.success("Email Verification Link Send Successfully")
+
     } catch (error) {
       if(error.code==="auth/email-already-in-use") return toast.error("User already exists")
     } finally {
@@ -54,7 +58,6 @@ export default function Register() {
   };
   return (
     <>
-      <Toaster richColors position="bottom-right" />
       <div className="auth-container">
         <div className="auth-form" >
           <h1>Register</h1>

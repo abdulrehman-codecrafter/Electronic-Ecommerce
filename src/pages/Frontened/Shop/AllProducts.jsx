@@ -1,30 +1,30 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ShopItemsContext } from "../../../contexts/ShopContext";
+import { ProductsContext } from "../../../contexts/ProductsContext";
 import ProductCard from "../../../components/ProductCard";
 
 export default function AllProducts() {
-  const { shopItems } = useContext(ShopItemsContext);
-  const [products, setProducts] = useState([]);
+  const { products } = useContext(ProductsContext);
+  const [shopProducts, setShopProducts] = useState([]);
   const [filterBtns, setFilterBtns] = useState([]);
   const [search, setSearch] = useState("");
 
   const filterItems = (filterBtn) => {
-    setProducts(
-      shopItems.filter((item) => {
+    setShopProducts(
+      products.filter((item) => {
         return item.category === filterBtn;
       })
     );
   };
 
   useEffect(() => {
-    setProducts(shopItems);
+    setShopProducts(products);
 
-    const allFilterBtns = shopItems.map((item) => {
+    const allFilterBtns = products.map((item) => {
       return item.category;
     });
 
     setFilterBtns([...new Set(allFilterBtns)]);
-  }, [shopItems]);
+  }, [products]);
   return (
     <>
       <div className="filter-bar mt-4 mb-5 container d-flex justify-content-center gap-3 flex-wrap">
@@ -32,7 +32,7 @@ export default function AllProducts() {
           className="btn "
           style={{ border: `1.5px solid var(--primary-color)` }}
           onClick={() => {
-            setProducts(shopItems);
+            setShopProducts(products);
           }}
         >
           All
@@ -69,7 +69,7 @@ export default function AllProducts() {
       </div>
 
       <div className="all-products-container container d-flex gap-4 flex-wrap justify-content-center">
-        {products
+        {shopProducts
           .filter((product) => {
             return search.toLowerCase() === "" ? product : product.title.toLowerCase().includes(search.toLowerCase());
           })

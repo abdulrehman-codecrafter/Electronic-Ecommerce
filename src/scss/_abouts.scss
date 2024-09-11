@@ -1,0 +1,38 @@
+.about-banner{
+  height: 300px;
+  background-size: cover; /* This ensures the image covers the entire area */
+  background-position: center; /* This centers the image */
+  background-repeat: no-repeat;
+}
+
+.who-we-are-img img{
+  width: 400px;
+  border-radius: 0.5rem;
+}
+
+.who-we-are-details{
+  width: 500px;
+}
+
+.download-app{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+  
+}
+.download-app video{
+  max-width: 900px;
+  width: 70%;
+  border-radius: 1.5rem;
+}
+
+
+@media screen and (max-width:576px){
+  .who-we-are-img img{
+    width: 300px;
+  }
+  .who-we-are-details{
+    text-align: center;
+  }
+}

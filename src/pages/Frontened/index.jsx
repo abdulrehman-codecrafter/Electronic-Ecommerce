@@ -6,6 +6,7 @@ import Contact from './Contact'
 import Shop from "./Shop"
 import Header from '../../components/Header'
 import FooterComponent from '../../components/Footer'
+import Cart from './Cart'
 export default function Frontened() {
   return (
     <>
@@ -14,6 +15,7 @@ export default function Frontened() {
       <Route index element={<Home />}/>
       <Route path="about" element={<About />}/>
       <Route path="contact" element={<Contact />}/>
+      <Route path='cart' element={<Cart />} />
       <Route path="shop/*" element={<Shop />}/>
     </Routes>
       <FooterComponent />
